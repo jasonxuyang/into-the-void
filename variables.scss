@@ -1,0 +1,43 @@
+//
+// Colors
+//
+$primary: #a6edfc; //Light Blue
+$secondary: #b0ffe9; //Light Green
+$background: #d7fdff; //Light Light Blue
+$accent: #001aff; //Stronk Blue, Listen there are a lot of blues ok?
+$black: #171717; //Black
+$white: #ffffff; //White
+$gray: #8c8c8c; //Gray
+
+//
+// Font-size
+//
+$h1: 64px;
+$h2: 52px;
+$h3: 36px;
+$h4: 28px;
+$p: 20px;
+$overline: 20px;
+
+//
+// Margins
+//
+$m1: 8px;
+$m2: 16px;
+$m3: 24px;
+$m4: 32px;
+$m5: 40px;
+
+//
+// Breakpoints
+//
+$breakpoints: (
+  'phone': 400px,
+  'phone-wide': 480px,
+  'phablet': 560px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px,
+);
