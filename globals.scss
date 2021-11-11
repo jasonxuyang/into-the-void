@@ -80,8 +80,8 @@ a {
   text-decoration: none;
 }
 
-a,img,svg,video {
-  display: block;
+a,div,img,svg,video {
+  display: inline-block;
 }
 
 img,video {

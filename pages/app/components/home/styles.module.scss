@@ -3,13 +3,15 @@
 .location_card_container {
     display: flex;
     flex-direction: column;
-    padding: $m2;
+    padding: $m5;
     border: 2px solid $black;
     align-items: center;
     width: $column-width * 2;
     cursor: pointer;
     color: $black;
     background-color: transparent;
+    margin-right: $column-width;
+    margin-bottom: $m5;
     transition: all 0.2s ease;
 
     h4 {

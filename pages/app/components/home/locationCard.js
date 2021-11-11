@@ -7,7 +7,7 @@ export default function LocationCard({
 
     return (
         <div className={styles.location_card_container} onClick={() => goToLocation(locationName)}>
-            <p>{locationName}</p>
+            <h4>{locationName}</h4>
         </div>
     )
 }

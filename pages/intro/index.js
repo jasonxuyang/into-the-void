@@ -16,30 +16,46 @@ export default function Intro() {
         setCurrPassage(currPassage + 1);
     }
 
+    const renderPassage = () => {
+        return (
+            <div className={styles.passage}>
+                {Array.isArray(data.passages[currPassage].props.children) ?
+                    data.passages[currPassage].props.children.map((passage, index) => {
+                        return <p key={`${currPassage} ${index}`}>{passage.props.children}</p>
+                    }) : <p>{data.passages[currPassage].props.children}</p>
+                }
+            </div>
+        )
+    }
+
     const renderIntro = () => {
         if (currPassage < 0) {
             return (
                 <>
-                    <h1>Into the Void</h1>
+                    <h1 className={styles.title}>Into the Void</h1>
                     <div className={styles.button} onClick={goToNextPassage}>Start</div>
                 </>
             )
-        } else if (currPassage == data.passages.length - 2) {
+        } else if (currPassage > data.passages.length - 1) {
             return <Link href='/app'>
                 <div className={styles.button}>Begin</div>
             </Link>
         } else {
             return (
                 <>
-                    <p className={styles.passage}>{data.passages[currPassage]}</p>
-                    <div className={styles.button} onClick={goToNextPassage}>Continue</div>
+                    {renderPassage()}
+                    {
+                        currPassage > data.passages.length - 2 ? <Link href='/app'>
+                            <div className={styles.button}>Begin</div>
+                        </Link> : <div className={styles.button} onClick={goToNextPassage}>Continue</div>
+                    }
                 </>
             )
         }
     }
 
     return (
-        <main className={styles.container}>
+        <main className={styles.intro_container}>
             {renderIntro()}
         </main>
     )

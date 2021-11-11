@@ -1,20 +1,24 @@
 @import '../../variables.scss';
 
-.container {
+.intro_container {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .title {
+        margin-bottom: $m2;
+    }
 }
 
 .button {
     border: 2px solid $black;
     background-color: transparent;
     color: $black;
-    width: $column-width;
-    padding: 16px;
+    width: $column-width * 2;
+    padding: $m2;
     text-align: center;
     cursor: pointer;
     transition: all 0.3 ease;
@@ -27,5 +31,10 @@
 
 .passage {
     width: 6 * $column-width;
-    margin-bottom: 16px;
+    margin-bottom: $m1;
+    text-align: center;
+
+    p {
+        margin-bottom: $m2;
+    }
 }
