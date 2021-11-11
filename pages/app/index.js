@@ -15,9 +15,9 @@ export default function App() {
 
   const renderState = () => {
     return <div className={styles.status_container}>
-      <h4>Status:</h4>
-      <p>Time Left: {turnsLeft}</p>
-      <p>Current Location: {location}</p>
+      <h4>Status</h4>
+      <p>Hours Left: <strong>{turnsLeft}</strong></p>
+      <p>Location: <strong>{location}</strong></p>
     </div>
   }
 
@@ -33,8 +33,8 @@ export default function App() {
   return (
     <main id={styles.app_container}>
       {renderState()}
-      {location == 'Home' ?
-        <>
+      <div className={styles.locations_container_wrapper}>
+        {location == 'Home' ?
           <div className={styles.locations_container}>
 
             <div className={styles.location_group}>
@@ -64,10 +64,14 @@ export default function App() {
                 locationName='Main Deck'
                 goToLocation={goToLocation}
               />
+
+              <LocationCard
+                locationName='Main Deck'
+                goToLocation={goToLocation}
+              />
             </div>
-          </div>
-        </> : renderLocation()
-      }
+          </div> : renderLocation()
+        }</div>
     </main>
   )
 }
