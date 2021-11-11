@@ -4,9 +4,7 @@ export default function Location({
 
     return (
         <div>
-            <main>
-                <h1>{locationName}</h1>
-            </main>
+            <h4>{locationName}</h4>
         </div>
     )
 }
