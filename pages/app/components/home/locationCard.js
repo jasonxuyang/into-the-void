@@ -2,11 +2,12 @@ import styles from './styles.module.scss'
 
 export default function LocationCard({
     locationName,
-    goToLocation
+    goToLocation,
+    isDisabled
 }) {
 
     return (
-        <div className={styles.location_card_container} onClick={() => goToLocation(locationName)}>
+        <div className={!isDisabled ? `${styles.location_card_container}` : `${styles.location_card_container} ${styles.disabled}`} onClick={() => goToLocation(locationName)}>
             <h4>{locationName}</h4>
         </div>
     )

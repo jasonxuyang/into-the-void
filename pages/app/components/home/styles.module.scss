@@ -23,3 +23,10 @@
     background-color: $black;
     color: $white;
 }
+
+.disabled {
+    pointer-events: none;
+    color: $white;
+    background-color: #E5E5E5;
+    border-color: #E5E5E5;
+}

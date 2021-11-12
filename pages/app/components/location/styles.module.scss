@@ -1,0 +1,23 @@
+@import '../../../../variables.scss';
+
+.location_page_container {
+    a {
+        margin-bottom: $m1;
+    }
+
+    .disabled {
+        color: $gray;
+        pointer-events: none;
+    }
+}
+
+.location_instructions_container {
+    margin-bottom: $m3;
+}
+
+.passage {
+    p {
+        margin-bottom: $m2;
+        margin-right: $column-width * 2;
+    }
+}

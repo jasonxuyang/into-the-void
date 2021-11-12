@@ -1,13 +1,12 @@
 @import '../../variables.scss';
 .app_container {
-    position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
 .status_container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: $column-width * 2;
@@ -20,10 +19,8 @@
     }
 }
 
-.locations_container_wrapper {
-    position: relative;
-    top: 0;
-    left: $column-width * 3;
+.content_wrapper {
+    margin-left: $column-width * 3;
     width: $column-width * 10;
     height: 100vh;
 }
@@ -39,4 +36,29 @@
         flex-direction: row;
         width: $column-width * 10;
     }
+}
+
+.location_page_container {
+    width: $column-width * 10;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: $m5;
+}
+
+
+.back_button {
+    text-align: center;
+    margin-top: $m5;
+    padding: $m2;
+    border: 2px solid $black;
+    color: $black;
+    width: $column-width;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.back_button:hover {
+    background-color: $black;
+    color: $white;
 }

@@ -80,8 +80,13 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 a,div,img,svg,video {
-  display: inline-block;
+  display: block;
 }
 
 img,video {
