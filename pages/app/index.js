@@ -7,6 +7,7 @@ export default function App() {
   const [suspects, setSuspects] = useState([]);
   const [turnsLeft, setTurnsLeft] = useState(24);
   const [location, setLocation] = useState('Home');
+  const [ventsEnabled, setVentsEnabled] = useState(false);
 
   const goToLocation = (locationName) => {
     setLocation(locationName);
@@ -22,52 +23,58 @@ export default function App() {
   }
 
   const renderLocation = () => {
-    return <>
+    return <div className={styles.location_page_container}>
       <Location
         locationName={location}
+        ventsEnabled={ventsEnabled}
+        setVentsEnabled={setVentsEnabled}
       />
-      <a onClick={() => goToLocation('Home')}><p>Go Back</p></a>
-    </>
+      <div onClick={() => goToLocation('Home')} className={styles.back_button}><p>Go Back</p></div>
+    </div>
   }
 
   return (
     <main id={styles.app_container}>
       {renderState()}
-      <div className={styles.locations_container_wrapper}>
+      <div className={styles.content_wrapper}>
         {location == 'Home' ?
           <div className={styles.locations_container}>
+            <div className={styles.location_group}>
+              <LocationCard
+                locationName='Main Frame'
+                goToLocation={goToLocation}
+                isDisabled={false}
+              />
 
+              <LocationCard
+                locationName='Barracks'
+                goToLocation={goToLocation}
+                isDisabled={false}
+              />
+
+              <LocationCard
+                locationName='Main Deck'
+                goToLocation={goToLocation}
+                isDisabled={false}
+              />
+            </div>
             <div className={styles.location_group}>
               <LocationCard
                 locationName='Hanger'
                 goToLocation={goToLocation}
+                isDisabled={true}
               />
 
               <LocationCard
                 locationName='Engineering'
                 goToLocation={goToLocation}
+                isDisabled={true}
               />
 
               <LocationCard
                 locationName='Lab'
                 goToLocation={goToLocation}
-              />
-            </div>
-
-            <div className={styles.location_group}>
-              <LocationCard
-                locationName='Main Frame'
-                goToLocation={goToLocation}
-              />
-
-              <LocationCard
-                locationName='Main Deck'
-                goToLocation={goToLocation}
-              />
-
-              <LocationCard
-                locationName='Main Deck'
-                goToLocation={goToLocation}
+                isDisabled={true}
               />
             </div>
           </div> : renderLocation()
