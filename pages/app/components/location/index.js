@@ -5,16 +5,20 @@ import { useState } from 'react';
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const processLocationName = (str) => {
-    let strArr = str.split(' ') ?? '';
-    let finalStr = '';
-    strArr.map((str, index) => {
-        if (index == 0) {
-            finalStr += str.toLowerCase();
-        } else {
-            finalStr += str;
-        }
-    });
-    return finalStr;
+    if (str) {
+        let strArr = str.split(' ');
+        let finalStr = '';
+        strArr.map((str, index) => {
+            if (index == 0) {
+                finalStr += str.toLowerCase();
+            } else {
+                finalStr += str;
+            }
+        });
+        return finalStr;
+    } else {
+        return null;
+    }
 }
 
 export default function Location({
