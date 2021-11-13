@@ -6,29 +6,29 @@ export default function handler(req, res) {
         people: [
             {
                 name: 'Nav Station',
-                passages: [
+                passages: 
                     (<>
                         <p>You find a small blood splatter (nearly impossible to detect) on the control panel.</p>
                         <p>As you examine the splatter pattern, you follow its trail, ending with a seemly large swipe of blood (as if someone tried to clean it up in a rush)</p>
                     </>)
-                ]
+                
             }
         ],
         objects: [
             {
                 name: 'Navigator',
-                passages: [
+                passages: 
                     (<>
                         <p>Player: So, you’re in charge now right? What do we do?</p>
                         <p>I suppose so. I want to turn this bird around and go home - but Rubin won’t let us. His auto-pilot function didn’t deactivate when it should have. The Tech and the Pilot are trying to figure it out.</p>
                         <p>Player: Well what about the mission?</p>
                         <p>Navigator: I don’t care. I don’t like it. There’s more going on here than we understand...</p>
                     </>)
-                ]
+                
             },
             {
                 name: 'Pilot',
-                passages: [
+                passages: 
                     (<>
                         <p>Sitting in his Helmsmans chair, the Pilot toils away on his console seeing what he can determine. You can tell he’s frustrated… he has no control of the Revolution.</p>
                         <p>You: How’s it going? Still no control?</p>
@@ -40,15 +40,15 @@ export default function handler(req, res) {
                         <p>You: Weird.</p>
                         <p>Pilot: You didn’t hear that from me though.</p>
                     </>)
-                ]
+                
             },
             {
                 name: 'Air Vent',
-                passages: [
+                passages: 
                     (
                         <p>Empty</p>
                     )
-                ]
+                
             }
         ]
     })

@@ -72,7 +72,7 @@ export default function handler(req, res) {
     <p>*Everyone looks at the Engineer with disgust.</p>
   </>
   let p19 = <>
-    <p>Navigator: We have a missing man, our Captain no less, and you're concerned about your paycheck??</p>
+    <p>Navigator: We have a missing man, our Captain no less, and you&apos;re concerned about your paycheck??</p>
     <p>Engineer: Look, I don’t know anyone here, I don’t know anything about whatever the hell we’re looking for, I don’t know where the Captain is, and I don’t know when we’re getting back. What I do know, is that we’re getting Space Pay for this bullshit and that’s all I care about.</p>
     <p>Navigator: Clearly.</p>
     <p>*The Engineer shrugs and plays it off.</p>

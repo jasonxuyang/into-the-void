@@ -64,10 +64,10 @@ export default function Location({
     const renderPassage = (entity) => {
         return (
             <div className={styles.passage}>
-                {Array.isArray(entity.passages[0].props.children) ?
-                    entity.passages[0].props.children.map((passage, index) => {
-                        return <p key={`${0} ${index}`}>{passage.props.children}</p>
-                    }) : <p>{entity.passages[0].props.children}</p>
+                {Array.isArray(entity.passages.props.children) ?
+                    entity.passages.props.children.map((passage, index) => {
+                        return <p key={`p ${index}`}>{passage.props.children}</p>
+                    }) : <p>{entity.passages.props.children}</p>
                 }
             </div>
         )
