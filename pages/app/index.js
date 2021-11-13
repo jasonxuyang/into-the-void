@@ -39,6 +39,7 @@ export default function App() {
       <div className={styles.content_wrapper}>
         {location == 'Home' ?
           <div className={styles.locations_container}>
+            <h3>Investigate a Location</h3>
             <div className={styles.location_group}>
               <LocationCard
                 locationName='Main Frame'

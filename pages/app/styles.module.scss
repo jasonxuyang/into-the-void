@@ -36,6 +36,12 @@
         flex-direction: row;
         width: $column-width * 10;
     }
+
+    h3 {
+        width: $column-width * 8;
+        text-align: center;
+        margin-bottom: $m5;
+    }
 }
 
 .location_page_container {
