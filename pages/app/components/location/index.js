@@ -5,7 +5,7 @@ import { useState } from 'react';
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const processLocationName = (str) => {
-    let strArr = str.split(' ');
+    let strArr = str.split(' ') ?? '';
     let finalStr = '';
     strArr.map((str, index) => {
         if (index == 0) {
