@@ -132,17 +132,17 @@ p, div {
 
 .button {
   border: 2px solid $white;
-  background-color: transparent;
+  background-color: $black;
   color: $white;
   width: $column-width * 2;
   padding: $m2;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3 ease;
   user-select: none;
 }
 
 .button:hover {
+  transition: all 0.3s ease;
   background-color: $white;
   color: $black;
 }

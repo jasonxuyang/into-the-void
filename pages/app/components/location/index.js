@@ -32,7 +32,9 @@ export default function Location({
     setNavigatorConfronted,
     cookConfronted,
     setCookConfronted,
-    setOutroEnabled
+    setOutroEnabled,
+    setLog,
+    setNotification
 }) {
     const [currEntity, setCurrentEntity] = useState(null);
     const [data, setData] = useState(null);
@@ -67,26 +69,35 @@ export default function Location({
                     if (navigatorConfronted) {
                         return <a key={person.name} onClick={() => {
                             setCookConfronted(true);
+                            setNotification('You and the Navigator have the Cook, take him to the Hangar.');
+                            setLog(log => log.concat(`Talked with ${person.name}.`));
                             setCurrentEntity(person);
                         }}>{person.name}</a>
                     } else {
                         return <a key={person.name} onClick={() => {
                             setVentsEnabled(true);
+                            setLog(log => log.concat(`Talked with ${person.name}.`));
                             setCurrentEntity(person);
                         }}>{person.name}</a>
                     }
                 } else if (person.name == 'Navigator' && bodyFound && datapadRead) {
                     return <a key={person.name} onClick={() => {
                         setNavigatorConfronted(true);
+                        setNotification('Go to the Barrackss and confront the Cook.');
+                        setLog(log => log.concat(`Talked with ${person.name}.`));
                         setCurrentEntity(person);
                     }}>{person.name}</a>
                 } else if (person.name == 'Security Officer' && cookConfronted) {
                     return <a key={person.name} onClick={() => {
                         setOutroEnabled(true);
+                        setLog(log => log.concat(`Talked with ${person.name}.`));
                         setCurrentEntity(person);
                     }}>{person.name}</a>
                 } else {
-                    return <a key={person.name} onClick={() => setCurrentEntity(person)}>{person.name}</a>
+                    return <a key={person.name} onClick={() => {
+                        setCurrentEntity(person);
+                        setLog(log => log.concat(`Talked with ${person.name}.`));
+                    }}>{person.name}</a>
                 }
             })}
         </>
@@ -97,29 +108,42 @@ export default function Location({
             {objects.map(object => {
                 if (object.name == 'Air Vent') {
                     if (!ventsEnabled)
-                        return <a key={object.name} className={styles.disabled} onClick={() => setCurrentEntity(object)}><strike>{object.name}</strike></a>
+                        return <a key={object.name} className={styles.disabled} onClick={() => {
+                            setLog(log => log.concat(`Interacted with ${object.name}.`));
+                            setCurrentEntity(object);
+                        }}><strike>{object.name}</strike></a>
                     else {
                         if (location == 'Engineering') {
                             return <a key={object.name} onClick={() => {
                                 setBodyFound(true);
+                                setLog(log => log.concat(`Interacted with ${object.name}.`));
                                 setCurrentEntity(object);
                             }}>{object.name}</a>
                         } else {
-                            return <a key={object.name} onClick={() => setCurrentEntity(object)}>{object.name}</a>
+                            return <a key={object.name} onClick={() => {
+                                setLog(log => log.concat(`Interacted with ${object.name}.`));
+                                setCurrentEntity(object);
+                            }}>{object.name}</a>
                         }
                     }
                 } else if (object.name == 'Datapad' && passwordFound) {
                     return <a key={object.name} onClick={() => {
                         setDatapadRead(true);
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
                         setCurrentEntity(object);
                     }}>{object.name}</a>
                 } else if (object.name == 'Locker') {
                     return <a key={object.name} onClick={() => {
                         setPasswordFound(true);
+                        setNotification('I think this password can be typed in somewhere...');
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
                         setCurrentEntity(object);
                     }}>{object.name}</a>
                 } else {
-                    return <a key={object.name} onClick={() => setCurrentEntity(object)}>{object.name}</a>
+                    return <a key={object.name} onClick={() => {
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        setCurrentEntity(object);
+                    }}>{object.name}</a>
                 }
             })}
         </>

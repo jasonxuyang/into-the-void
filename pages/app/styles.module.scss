@@ -7,17 +7,31 @@
 
 .status_container {
     position: fixed;
-    bottom: $column-width - $m2;
-    right: $column-width - $m2;
+    top: $m3;
+    right: $column-width + $m2;
     background-color: $black;
     height: 40vh;
     width: 40vw;
-    padding: $m2;
     overflow-y: scroll;
     border: 2px solid $white;
 
     h4 {
         margin-bottom: $m1;
+    }
+
+    .status_log {
+        margin-left: $m2;
+    }
+
+    .status {
+        position: sticky;
+        top: 0;
+        background-color: $black;
+        padding: $m2;
+    }
+
+    .status_notification {
+        color: rgb(255, 0, 0);
     }
 }
 
@@ -26,14 +40,21 @@
     width: $column-width - $m2;
     height: auto;
     right: $m2;
-    bottom: $m2;
+    top: $m2;
     cursor: pointer;
     transition: all 0.2s ease;
-    z-index: 1;
 }
 
 .rbn:hover {
     transform: scale(1.2, 1.2);
+}
+
+.notification_icon {
+    position: fixed;
+    top: calc($m1);
+    right: calc($m4);
+    color: rgb(255, 0, 0);
+    z-index: 1;
 }
 
 .content_wrapper {
@@ -62,8 +83,12 @@
 }
 
 .location_page_container {
-    width: $column-width * 10;
+    width: $column-width * 8;
     height: 100vh;
     box-sizing: border-box;
     padding-top: $m5;
+}
+
+.back_button {
+    margin-bottom: 64px;
 }
