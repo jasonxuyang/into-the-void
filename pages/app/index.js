@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Location from './components/location';
 import styles from './styles.module.scss'
-import Link from 'next/link'
 import LocationCard from './components/home/locationCard';
 
 export default function App() {
@@ -91,18 +90,14 @@ export default function App() {
         setNavigatorConfronted={setNavigatorConfronted}
         cookConfronted={cookConfronted}
         setCookConfronted={setCookConfronted}
+        outroEnabled={outroEnabled}
         setOutroEnabled={setOutroEnabled}
         setLog={setLog}
         setNotification={setNotification}
+        goToLocation={goToLocation}
+        turnsLeft={turnsLeft}
+        setTurnsLeft={setTurnsLeft}
       />
-      {
-        !outroEnabled ?
-          <div onClick={() => goToLocation('Home')} className={`button ${styles.back_button}`}><p>Go Back</p></div>
-          :
-          <Link href='/outro'>
-            <div className={`button ${styles.back_button}`}>Go To Main Deck</div>
-          </Link>
-      }
     </div>
   }
 

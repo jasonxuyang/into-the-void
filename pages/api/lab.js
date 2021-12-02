@@ -104,11 +104,11 @@ export default function handler(req, res) {
 
             },
             {
-                name: 'Vent',
+                name: 'Air Vent',
                 passages:
-                    (<>
+                    (
                         <p>Empty</p>
-                    </>)
+                    )
 
             }
         ]
