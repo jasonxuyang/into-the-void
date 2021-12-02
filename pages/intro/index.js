@@ -12,6 +12,10 @@ export default function Intro() {
     if (error) return <div>Failed to load</div>
     if (!data) return <div>Loading...</div>
 
+    const goToPreviousPassage = () => {
+        setCurrPassage(currPassage - 1);
+    }
+
     const goToNextPassage = () => {
         setCurrPassage(currPassage + 1);
     }
@@ -31,25 +35,26 @@ export default function Intro() {
     const renderIntro = () => {
         if (currPassage < 0) {
             return (
-                <>
-                    <h1 className={styles.title}>Into the Void</h1>
-                    <div className={styles.button} onClick={goToNextPassage}>Start</div>
-                </>
+                <div className={styles.title_container}>
+                    <div className={styles.title_info_container}>
+                        <h1 className={styles.title}>Into the Void</h1>
+                        <p>Made for Georgia Tech&apos;s LMC 2410 - Intro to Game Studies Class</p>
+                        <div className={'button'} onClick={goToNextPassage}>Start</div>
+                    </div>
+                    <img src='/asset/title-screen.png' alt='pixel art spaceship' className={styles.title_image} />
+                </div>
             )
-        } else if (currPassage > data.passages.length - 1) {
-            return <Link href='/app'>
-                <div className={styles.button}>Begin</div>
-            </Link>
         } else {
             return (
-                <>
+                <div className={styles.passage_container}>
                     {renderPassage()}
                     {
                         currPassage > data.passages.length - 2 ? <Link href='/app'>
-                            <div className={styles.button}>Begin</div>
-                        </Link> : <div className={styles.button} onClick={goToNextPassage}>Continue</div>
+                            <div className={`button ${styles.continue}`}>Begin</div>
+                        </Link> : <div className={`button ${styles.continue}`} onClick={goToNextPassage}>Continue</div>
                     }
-                </>
+                    <div className={`button ${styles.back}`} onClick={goToPreviousPassage}>Back</div>
+                </div>
             )
         }
     }

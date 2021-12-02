@@ -4,24 +4,22 @@
     display: flex;
     flex-direction: column;
     padding: $m5;
-    border: 2px solid $black;
+    border: 2px solid $white;
     align-items: center;
+    justify-content: center;
     width: $column-width * 2;
     cursor: pointer;
-    color: $black;
+    color: $white;
+    text-align: center;
     background-color: transparent;
     margin-right: $column-width;
     margin-bottom: $m5;
     transition: all 0.2s ease;
-
-    h4 {
-        text-align: center;
-    }
 }
 
 .location_card_container:hover {
-    background-color: $black;
-    color: $white;
+    background-color: $white;
+    color: $black;
 }
 
 .disabled {

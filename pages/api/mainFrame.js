@@ -1,26 +1,40 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 export default function handler(req, res) {
     res.status(200).json({
         locationName: 'Main Frame',
         people: [
             {
                 name: 'RBN',
-                passages: 
+                passages:
                     (<>
                         <p>You: Hey Rubin, How’s the weather outside today?</p>
-                        <p>Haha, very amusing. Is there anything I can assist you with?</p>
-                        <p>Yeah actually, what the hell is going on?</p>
-                        <p>You’ll have to be more specific; what are you referring to?</p>
-                        <p>The Captain. Where is he?</p>
-                        <p>According to my logs, the Captains pod was opened *pause* bvlkiahdcIYHGOUazxljhgv jhkabsc kjabsxckjlabx KHSBXouY</p>
-                        <p>What?</p>
-                        <p>Error accessing this information.</p>
-                        <p>He’s glitched out every time I ask him something about the Captain.</p>
-                        <p>That’s not suspicious at all...</p>
+                        <p>RBN: Haha, very amusing. Is there anything I can assist you with?</p>
+                        <p>You: Yeah actually, what the hell is going on?</p>
+                        <p>RBN: You’ll have to be more specific; what are you referring to?</p>
+                        <p>You: The Captain. Where is he?</p>
+                        <p>RBN: According to my logs, the Captains pod was opened *pause* bvlkiahdcIYHGOUazxljhgv jhkabsc kjabsxckjlabx KHSBXouY</p>
+                        <p>You: What?</p>
+                        <p>RBN: Error accessing this information.</p>
+                        <p>Technician: He’s glitched out every time I ask him something about the Captain.</p>
+                        <p>You: That’s not suspicious at all</p>
                     </>)
-                
-            }
+            },
+            {
+                name: 'Technician',
+                passages:
+                    (<>
+                        <p>You: Hey.</p>
+                        <p>Technician: Hey.</p>
+                        <p>You: Any idea what’s going on with Rubin?</p>
+                        <p>Technician: Not quite sure yet. Seems that his operating system is acting abnormal. Executions and commands are performing the way they should. Some of them anyway.</p>
+                        <p>You: Why? Is that fixable?</p>
+                        <p>Technician: I have no idea why. I could; if I had the access codes to some of this stuff. A lot of these problems seem to be rooted at a higher level than even I have access to.</p>
+                        <p>You: You can’t hack it or get in through a backdoor or something?</p>
+                        <p>Technician: Theoretically I could, but that’s illegal. And time consuming.</p>
+                        <p>You: Shit.</p>
+                        <p>Technician: Yeah and the Navigator is on me about fixing it ASAP but… I don’t know. He’s weird. Kinda too concerned. We’re going where we need to go… can’t we complete the mission and then turn around? It’s off to me.</p>
+                        <p>You: Hmmm</p>
+                    </>)
+            },
         ],
         objects: [
             {
@@ -35,25 +49,14 @@ export default function handler(req, res) {
                         <p>They questioned it for a second and were murmuring something under their breath but you didn&apos;t catch it.</p>
                         <p>They ask you to move so the repairs can be started, which will take a while to fix.</p>
                     </>)
-                
             },
             {
                 name: 'Air Vent',
-                passages: 
+                passages:
                     (
                         <p>Empty</p>
                     )
-                
-            },
-            {
-                name: 'Technician',
-                passages: 
-                    (<>
-                        <p>Doesn’t talk much because they’re trying to figure out why RBN is on Autopilot</p>
-                        <p>Does bring up the fact that the Navigator was very adamant that they fix RBN at all cost </p>
-                    </>)
-                
-            },
+            }
         ]
     })
 }
