@@ -6,7 +6,7 @@ import LocationCard from './components/home/locationCard';
 
 export default function App() {
   const [log, setLog] = useState([]);
-  const [showStatus, setShowStatus] = useState(true);
+  const [showStatus, setShowStatus] = useState(false);
   const [turnsLeft, setTurnsLeft] = useState(24);
   const [location, setLocation] = useState('Home');
   const [ventsEnabled, setVentsEnabled] = useState(false);
@@ -16,24 +16,63 @@ export default function App() {
   const [navigatorConfronted, setNavigatorConfronted] = useState(false);
   const [cookConfronted, setCookConfronted] = useState(false);
   const [outroEnabled, setOutroEnabled] = useState(false);
+  const [notfication, setNotification] = useState('Every action you take will be recorded as an entry here. You have 24 hours. Good luck!');
 
   const goToLocation = (locationName) => {
     setLocation(locationName);
     setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 1);
     if (location == 'Home') {
-      setLog(log => log.concat(`Investigated ${locationName}.`));
+      setLog(log => log.concat(`Visited ${locationName}.`));
+    }
+  }
+
+  const openStatus = () => {
+    setShowStatus(true);
+  }
+
+  const closeStatus = () => {
+    setShowStatus(false);
+    if (notfication) {
+      setNotification(null);
     }
   }
 
   const renderStatus = () => {
     return <div className={styles.status_container}>
-      <p>Time until Destination: {turnsLeft} hours</p>
-      {
-        log.map((entry, index) => {
-          return <p key={index}>{entry}</p>
-        })
-      }
+      <div className={styles.status}>
+        <p>Time until Destination: {turnsLeft} hours</p>
+        {notfication ?
+          <p className={styles.status_notification}>{notfication}</p>
+          :
+          null
+        }
+      </div>
+      <div className={styles.status_log}>
+        {log.length < 1 ?
+          <p>No entries recorded.</p>
+          :
+          log.slice(0).reverse().map((entry, index) => {
+            return <p key={index}>{entry}</p>
+          })
+        }
+      </div>
     </div>
+  }
+
+  const renderRBN = () => {
+    return <>
+      {notfication ?
+        <h1 className={styles.notification_icon}>!</h1>
+        :
+        null}
+      <img src='/asset/rbn.png' alt='spaceship ai' className={styles.rbn}
+        onClick={() => {
+          if (showStatus)
+            closeStatus();
+          else
+            openStatus();
+        }} />
+    </>
   }
 
   const renderLocation = () => {
@@ -53,13 +92,15 @@ export default function App() {
         cookConfronted={cookConfronted}
         setCookConfronted={setCookConfronted}
         setOutroEnabled={setOutroEnabled}
+        setLog={setLog}
+        setNotification={setNotification}
       />
       {
         !outroEnabled ?
-          <div onClick={() => goToLocation('Home')} className={'button'}><p>Go Back</p></div>
+          <div onClick={() => goToLocation('Home')} className={`button ${styles.back_button}`}><p>Go Back</p></div>
           :
           <Link href='/outro'>
-            <div className={`button`}>Go To Main Deck</div>
+            <div className={`button ${styles.back_button}`}>Go To Main Deck</div>
           </Link>
       }
     </div>
@@ -67,13 +108,7 @@ export default function App() {
 
   return (
     <main id={styles.app_container}>
-      <img src='/asset/rbn.png' alt='spaceship ai' className={styles.rbn}
-        onClick={() => {
-          if (showStatus)
-            setShowStatus(false)
-          else
-            setShowStatus(true)
-        }} />
+      {renderRBN()}
       {showStatus ? renderStatus() : null}
       <div className={styles.content_wrapper}>
         {location == 'Home' ?
