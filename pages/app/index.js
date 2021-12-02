@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Location from './components/location';
 import styles from './styles.module.scss'
-import Link from 'next/link'
 import LocationCard from './components/home/locationCard';
 
 export default function App() {
