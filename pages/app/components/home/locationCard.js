@@ -8,7 +8,7 @@ export default function LocationCard({
 
     return (
         <div className={!isDisabled ? `${styles.location_card_container}` : `${styles.location_card_container} ${styles.disabled}`} onClick={() => goToLocation(locationName)}>
-            <h4>{locationName}</h4>
+            <p>{locationName}</p>
         </div>
     )
 }

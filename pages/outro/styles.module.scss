@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.intro_container {
+.outro_container {
     width: 100vw;
     height: 100vh;
 
@@ -68,4 +68,42 @@
         width: $column-width * 3;
         margin-bottom: $m3;
     }
+}
+
+.decision_container {
+    display: flex;
+    flex-direction: column;
+    width: $column-width * 8;
+    margin-left: $column-width * 2;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.decision_actions_container {
+    display: flex;
+    flex-direction: row;
+    margin-top: $m5;
+
+    .action {
+        border: 2px solid $white;
+        background-color: transparent;
+        color: $white;
+        width: $column-width * 2;
+        padding: $m2;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3 ease;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: $m3;
+      }
+      
+      .action:hover {
+        background-color: $white;
+        color: $black;
+      }
 }

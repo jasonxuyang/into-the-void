@@ -44,13 +44,11 @@
 }
 
 @font-face {
-  font-family: "DM Mono";
-  src: local('DM Mono'), local('DM Mono-Medium'),
-    url('/font/DMMono-Medium.woff2') format('woff2'),
-    url('/font/DMMono-Medium.woff') format('woff');
-  font-weight: 500;
+  font-family: "Pixel";
+  src: local('Pixel'), local('Pixel'),
+    url('/font/Pixel.woff2') format('woff2'),
+    url('/font/Pixel.woff') format('woff');
 }
-
 
 //
 // Reset default styling
@@ -101,32 +99,50 @@ img,video {
 //
 // Add styling
 //
+html {
+  background-color: $black;
+  color: $white;
+}
+
+
 h1 {
-  font-family: 'DM Sans';
-  font-weight: 500;
+  font-family: 'Pixel';
   font-size: $h1;
 }
 
 h2 {
-  font-family: 'DM Sans';
-  font-weight: 500;
+  font-family: 'Pixel';
   font-size: $h2;
 }
 
 h3 {
-  font-family: 'DM Mono';
-  font-weight: 500;
+  font-family: 'Pixel';
   font-size: $h3;
 }
 
 h4 {
-  font-family: 'DM Mono';
-  font-weight: 500;
+  font-family: 'Pixel';
   font-size: $h4;
 }
 
 p, div {
-  font-family: 'DM Sans';
-  font-weight: 400;
+  font-family: 'Pixel';
   font-size: $p;
+}
+
+.button {
+  border: 2px solid $white;
+  background-color: transparent;
+  color: $white;
+  width: $column-width * 2;
+  padding: $m2;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  user-select: none;
+}
+
+.button:hover {
+  background-color: $white;
+  color: $black;
 }

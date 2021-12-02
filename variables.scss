@@ -12,21 +12,22 @@ $gray: #8c8c8c; //Gray
 //
 // Font-size
 //
-$h1: 64px;
-$h2: 52px;
-$h3: 36px;
-$h4: 28px;
-$p: 20px;
+$h1: 4.444vw; // 64px
+$h2: 3.333vw; // 48px
+$h3: 2.778vw; // 40px
+$h4: 2.222vw;; // 32px
+$p: 1.667vw; // 24px
 $overline: 20px;
 
 //
 // Margins
 //
-$m1: 8px;
-$m2: 16px;
-$m3: 24px;
-$m4: 32px;
-$m5: 40px;
+$m1: 0.833vw; // 12px
+$m2: 1.111vw; // 16px
+$m3: 1.667vw; // 24px
+$m4: 2.222vw; // 32px
+$m5: 2.917vw; // 42px
+$m6: 4.444vw; // 64px
 
 $column-width: calc(100vw / 12);
 

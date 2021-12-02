@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 export default function handler(req, res) {
   let p1 = <p>The year is 2671.</p>
   let p2 = <p>3 days ago, Earth Systems - Space Division picked up a strange signal coming from deep, uncharted space. The origin and intent of this beacon is unknown.</p>
