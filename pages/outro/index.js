@@ -50,7 +50,7 @@ export default function Outro() {
                         </> :
                         <>
                             {renderPassage()}
-                            <div className={`button ${styles.back}`} onClick={goToPreviousPassage}>Back</div>
+                            {currPassage > 0 ? <div className={`button ${styles.back}`} onClick={goToPreviousPassage}>Back</div> : null}
                             <div className={`button ${styles.continue}`} onClick={goToNextPassage}>Continue</div>
                         </>
                 }

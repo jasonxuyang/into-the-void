@@ -32,9 +32,13 @@ export default function Location({
     setNavigatorConfronted,
     cookConfronted,
     setCookConfronted,
+    outroEnabled,
     setOutroEnabled,
     setLog,
-    setNotification
+    setNotification,
+    goToLocation,
+    turnsLeft,
+    setTurnsLeft
 }) {
     const [currEntity, setCurrentEntity] = useState(null);
     const [data, setData] = useState(null);
@@ -71,12 +75,14 @@ export default function Location({
                             setCookConfronted(true);
                             setNotification('You and the Navigator have the Cook, take him to the Hangar.');
                             setLog(log => log.concat(`Talked with ${person.name}.`));
+                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(person);
                         }}>{person.name}</a>
                     } else {
                         return <a key={person.name} onClick={() => {
                             setVentsEnabled(true);
                             setLog(log => log.concat(`Talked with ${person.name}.`));
+                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(person);
                         }}>{person.name}</a>
                     }
@@ -85,18 +91,21 @@ export default function Location({
                         setNavigatorConfronted(true);
                         setNotification('Go to the Barrackss and confront the Cook.');
                         setLog(log => log.concat(`Talked with ${person.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(person);
                     }}>{person.name}</a>
                 } else if (person.name == 'Security Officer' && cookConfronted) {
                     return <a key={person.name} onClick={() => {
                         setOutroEnabled(true);
                         setLog(log => log.concat(`Talked with ${person.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(person);
                     }}>{person.name}</a>
                 } else {
                     return <a key={person.name} onClick={() => {
-                        setCurrentEntity(person);
                         setLog(log => log.concat(`Talked with ${person.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        setCurrentEntity(person);
                     }}>{person.name}</a>
                 }
             })}
@@ -110,6 +119,7 @@ export default function Location({
                     if (!ventsEnabled)
                         return <a key={object.name} className={styles.disabled} onClick={() => {
                             setLog(log => log.concat(`Interacted with ${object.name}.`));
+                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(object);
                         }}><strike>{object.name}</strike></a>
                     else {
@@ -117,11 +127,13 @@ export default function Location({
                             return <a key={object.name} onClick={() => {
                                 setBodyFound(true);
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
+                                setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                                 setCurrentEntity(object);
                             }}>{object.name}</a>
                         } else {
                             return <a key={object.name} onClick={() => {
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
+                                setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                                 setCurrentEntity(object);
                             }}>{object.name}</a>
                         }
@@ -130,6 +142,7 @@ export default function Location({
                     return <a key={object.name} onClick={() => {
                         setDatapadRead(true);
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</a>
                 } else if (object.name == 'Locker') {
@@ -137,11 +150,13 @@ export default function Location({
                         setPasswordFound(true);
                         setNotification('I think this password can be typed in somewhere...');
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</a>
                 } else {
                     return <a key={object.name} onClick={() => {
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</a>
                 }
@@ -226,6 +241,17 @@ export default function Location({
                         {renderObjects()}
                     </div>
                 </> : renderPassage(currEntity)
+            }
+            {
+                !outroEnabled ?
+                    currEntity ?
+                        <div onClick={() => setCurrentEntity(null)} className={`button ${styles.back_button}`}><p>Back to {location}</p></div>
+                        :
+                        <div onClick={() => goToLocation('Home')} className={`button ${styles.back_button}`}><p>Go Home</p></div>
+                    :
+                    <Link href='/outro'>
+                        <div className={`button ${styles.back_button}`}>Go To Main Deck</div>
+                    </Link>
             }
         </div>
     )
