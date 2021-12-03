@@ -38,8 +38,12 @@ export default function Location({
     setLog,
     setNotification,
     goToLocation,
-    turnsLeft,
-    setTurnsLeft
+    decreaseTime,
+    setFoundBlood,
+    setCutWireFound,
+    setKnifeFound,
+    setWipedDataFound
+
 }) {
     const [currEntity, setCurrentEntity] = useState(null);
     const [data, setData] = useState(null);
@@ -76,7 +80,7 @@ export default function Location({
                             setCookConfronted(true);
                             setNotification('You and the Navigator have the Cook, take him to the Hangar.');
                             setLog(log => log.concat(`Talked with ${person.name}.`));
-                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                            decreaseTime(0.5);
                             setCurrentEntity(person);
                         }}>
                             <img src={person.imgUrl} alt={person.name} />
@@ -86,7 +90,7 @@ export default function Location({
                         return <div key={person.name} className={styles.person_card} onClick={() => {
                             setVentsEnabled(true);
                             setLog(log => log.concat(`Talked with ${person.name}.`));
-                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                            decreaseTime(0.5);
                             setCurrentEntity(person);
                         }}>
                             <img src={person.imgUrl} alt={person.name} />
@@ -98,7 +102,7 @@ export default function Location({
                         setNavigatorConfronted(true);
                         setNotification('Go to the Barrackss and confront the Cook.');
                         setLog(log => log.concat(`Talked with ${person.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
                         setCurrentEntity(person);
                     }}>
                         <img src={person.imgUrl} alt={person.name} />
@@ -108,7 +112,7 @@ export default function Location({
                     return <div key={person.name} className={styles.person_card} onClick={() => {
                         setOutroEnabled(true);
                         setLog(log => log.concat(`Talked with ${person.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
                         setCurrentEntity(person);
                     }}>
                         <img src={person.imgUrl} alt={person.name} />
@@ -117,7 +121,7 @@ export default function Location({
                 } else {
                     return <div key={person.name} className={styles.person_card} onClick={() => {
                         setLog(log => log.concat(`Talked with ${person.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
                         setCurrentEntity(person);
                     }}>
                         <img src={person.imgUrl} alt={person.name} />
@@ -135,7 +139,7 @@ export default function Location({
                     if (!ventsEnabled)
                         return <div key={object.name} className={`${styles.object_card} ${styles.disabled}`} onClick={() => {
                             setLog(log => log.concat(`Interacted with ${object.name}.`));
-                            setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                            decreaseTime(0.5);
                             setCurrentEntity(object);
                         }}><strike>{object.name}</strike></div>
                     else {
@@ -143,13 +147,13 @@ export default function Location({
                             return <div key={object.name} className={styles.object_card} onClick={() => {
                                 setBodyFound(true);
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
-                                setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                                decreaseTime(0.5);
                                 setCurrentEntity(object);
                             }}>{object.name}</div>
                         } else {
                             return <div key={object.name} className={styles.object_card} onClick={() => {
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
-                                setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                                decreaseTime(0.5);
                                 setCurrentEntity(object);
                             }}>{object.name}</div>
                         }
@@ -158,7 +162,7 @@ export default function Location({
                     return <div key={object.name} className={styles.object_card} onClick={() => {
                         setDatapadRead(true);
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</div>
                 } else if (object.name == 'Locker') {
@@ -166,13 +170,41 @@ export default function Location({
                         setPasswordFound(true);
                         setNotification('I think this password can be typed in somewhere...');
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
+                        setCurrentEntity(object);
+                    }}>{object.name}</div>
+                } else if (object.name == 'Nav Station') {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
+                        setFoundBlood(true);
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        decreaseTime(0.5);
+                        setCurrentEntity(object);
+                    }}>{object.name}</div>
+                } else if (object.name == 'Ship Directory') {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
+                        setWipedDataFound(true);
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        decreaseTime(0.5);
+                        setCurrentEntity(object);
+                    }}>{object.name}</div>
+                } else if (object.name == 'Hydroponic Garden') {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
+                        setKnifeFound(true);
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        decreaseTime(0.5);
+                        setCurrentEntity(object);
+                    }}>{object.name}</div>
+                } else if (object.name == 'Cut Wire') {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
+                        setCutWireFound(true);
+                        setLog(log => log.concat(`Interacted with ${object.name}.`));
+                        decreaseTime(0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</div>
                 } else {
                     return <div key={object.name} className={styles.object_card} onClick={() => {
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
-                        setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
+                        decreaseTime(0.5);
                         setCurrentEntity(object);
                     }}>{object.name}</div>
                 }
@@ -265,7 +297,7 @@ export default function Location({
                         :
                         <div onClick={() => goToLocation('Home')} className={styles.back_button}><p>Go Home</p></div>
                     :
-                    <Link href='/outro'>
+                    <Link href='/true-ending'>
                         <div className={`button ${styles.back_button}`}>Go To Main Deck</div>
                     </Link>
             }

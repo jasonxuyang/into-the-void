@@ -15,13 +15,38 @@ export default function App() {
   const [navigatorConfronted, setNavigatorConfronted] = useState(false);
   const [cookConfronted, setCookConfronted] = useState(false);
   const [outroEnabled, setOutroEnabled] = useState(false);
-  const [notfication, setNotification] = useState('Every action you take will be recorded as an entry here. You have 24 hours. Good luck!');
+  const [halfWarning, setHalfWarning] = useState(false);
+  const [bloodFound, setFoundBlood] = useState(false);
+  const [cutWireFound, setCutWireFound] = useState(false);
+  const [knifeFound, setKnifeFound] = useState(false);
+  const [wipedDataFound, setWipedDataFound] = useState(false);
+  const [notfication, setNotification] = useState('Every action you take will be recorded as an entry here. You have 12 hours. Good luck!');
 
   const goToLocation = (locationName) => {
     setLocation(locationName);
-    setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 1);
+    decreaseTime(1);
     if (location == 'Home') {
       setLog(log => log.concat(`Visited ${locationName}.`));
+    }
+  }
+
+  const decreaseTime = (hours) => {
+    setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - hours);
+  }
+
+  const checkTurnsLeft = () => {
+    if (turnsLeft <= 6 && !halfWarning) {
+      setNotification('You have less than 6 hours to find the culprit!')
+      setHalfWarning(true);
+    }
+
+
+
+    if (turnsLeft <= 0) {
+      if (bloodFound && cutWireFound && knifeFound && wipedDataFound)
+        window.location.assign(`${window.location.origin}/good-ending`)
+      else
+        window.location.assign(`${window.location.origin}/bad-ending`)
     }
   }
 
@@ -95,12 +120,16 @@ export default function App() {
         setLog={setLog}
         setNotification={setNotification}
         goToLocation={goToLocation}
-        turnsLeft={turnsLeft}
-        setTurnsLeft={setTurnsLeft}
+        decreaseTime={decreaseTime}
+        setFoundBlood={setFoundBlood}
+        setCutWireFound={setCutWireFound}
+        setKnifeFound={setKnifeFound}
+        setWipedDataFound={setWipedDataFound}
       />
     </div>
   }
 
+  checkTurnsLeft();
   return (
     <main id={styles.app_container}>
       {renderRBN()}
