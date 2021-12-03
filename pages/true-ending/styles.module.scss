@@ -107,3 +107,17 @@
         color: $black;
       }
 }
+
+.ending {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+
+    p {
+        margin-bottom: $m2;
+    }
+}
