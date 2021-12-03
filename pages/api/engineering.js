@@ -4,6 +4,7 @@ export default function handler(req, res) {
         people: [
             {
                 name: 'Engineer',
+                imgUrl: '/asset/engineer.png',
                 passages:
                     (<>
                         <p>You: So you have no concern for what’s going on?</p>

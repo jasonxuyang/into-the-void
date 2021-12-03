@@ -6,7 +6,7 @@ import LocationCard from './components/home/locationCard';
 export default function App() {
   const [log, setLog] = useState([]);
   const [showStatus, setShowStatus] = useState(false);
-  const [turnsLeft, setTurnsLeft] = useState(24);
+  const [turnsLeft, setTurnsLeft] = useState(12);
   const [location, setLocation] = useState('Home');
   const [ventsEnabled, setVentsEnabled] = useState(false);
   const [passwordFound, setPasswordFound] = useState(false);
