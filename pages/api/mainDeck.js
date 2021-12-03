@@ -4,6 +4,7 @@ export default function handler(req, res) {
         people: [
             {
                 name: 'Navigator',
+                imgUrl: '/asset/navigator.png',
                 passages:
                     (<>
                         <p>You: So, you’re in charge now right? What do we do?</p>
@@ -41,6 +42,7 @@ export default function handler(req, res) {
             },
             {
                 name: 'Pilot',
+                imgUrl: '/asset/pilot.png',
                 passages:
                     (<>
                         <p>Sitting in his Helmsmans chair, the Pilot toils away on his console seeing what he can determine. You can tell he’s frustrated… he has no control of the Revolution.</p>

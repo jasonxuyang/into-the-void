@@ -4,6 +4,7 @@ export default function handler(req, res) {
         people: [
             {
                 name: 'RBN',
+                imgUrl: '/asset/rbn.png',
                 passages:
                     (<>
                         <p>You: Hey Rubin, How’s the weather outside today?</p>
@@ -20,6 +21,7 @@ export default function handler(req, res) {
             },
             {
                 name: 'Technician',
+                imgUrl: '/asset/technician.png',
                 passages:
                     (<>
                         <p>You: Hey.</p>

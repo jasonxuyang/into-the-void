@@ -68,101 +68,116 @@ export default function Location({
     const location = data.locationName;
 
     const renderPeople = () => {
-        return <>
+        return <div className={styles.person_container}>
             {people.map(person => {
                 if (person.name == 'Cook') {
                     if (navigatorConfronted) {
-                        return <a key={person.name} onClick={() => {
+                        return <div key={person.name} className={styles.person_card} onClick={() => {
                             setCookConfronted(true);
                             setNotification('You and the Navigator have the Cook, take him to the Hangar.');
                             setLog(log => log.concat(`Talked with ${person.name}.`));
                             setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(person);
-                        }}>{person.name}</a>
+                        }}>
+                            <img src={person.imgUrl} alt={person.name} />
+                            {person.name}
+                        </div>
                     } else {
-                        return <a key={person.name} onClick={() => {
+                        return <div key={person.name} className={styles.person_card} onClick={() => {
                             setVentsEnabled(true);
                             setLog(log => log.concat(`Talked with ${person.name}.`));
                             setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(person);
-                        }}>{person.name}</a>
+                        }}>
+                            <img src={person.imgUrl} alt={person.name} />
+                            {person.name}
+                        </div>
                     }
                 } else if (person.name == 'Navigator' && bodyFound && datapadRead) {
-                    return <a key={person.name} onClick={() => {
+                    return <div key={person.name} className={styles.person_card} onClick={() => {
                         setNavigatorConfronted(true);
                         setNotification('Go to the Barrackss and confront the Cook.');
                         setLog(log => log.concat(`Talked with ${person.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(person);
-                    }}>{person.name}</a>
+                    }}>
+                        <img src={person.imgUrl} alt={person.name} />
+                        {person.name}
+                    </div>
                 } else if (person.name == 'Security Officer' && cookConfronted) {
-                    return <a key={person.name} onClick={() => {
+                    return <div key={person.name} className={styles.person_card} onClick={() => {
                         setOutroEnabled(true);
                         setLog(log => log.concat(`Talked with ${person.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(person);
-                    }}>{person.name}</a>
+                    }}>
+                        <img src={person.imgUrl} alt={person.name} />
+                        {person.name}
+                    </div>
                 } else {
-                    return <a key={person.name} onClick={() => {
+                    return <div key={person.name} className={styles.person_card} onClick={() => {
                         setLog(log => log.concat(`Talked with ${person.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(person);
-                    }}>{person.name}</a>
+                    }}>
+                        <img src={person.imgUrl} alt={person.name} />
+                        {person.name}
+                    </div>
                 }
             })}
-        </>
+        </div>
     }
 
     const renderObjects = () => {
-        return <>
+        return <div className={styles.object_container}>
             {objects.map(object => {
                 if (object.name == 'Air Vent') {
                     if (!ventsEnabled)
-                        return <a key={object.name} className={styles.disabled} onClick={() => {
+                        return <div key={object.name} className={`${styles.object_card} ${styles.disabled}`} onClick={() => {
                             setLog(log => log.concat(`Interacted with ${object.name}.`));
                             setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                             setCurrentEntity(object);
-                        }}><strike>{object.name}</strike></a>
+                        }}><strike>{object.name}</strike></div>
                     else {
                         if (location == 'Engineering') {
-                            return <a key={object.name} onClick={() => {
+                            return <div key={object.name} className={styles.object_card} onClick={() => {
                                 setBodyFound(true);
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
                                 setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                                 setCurrentEntity(object);
-                            }}>{object.name}</a>
+                            }}>{object.name}</div>
                         } else {
-                            return <a key={object.name} onClick={() => {
+                            return <div key={object.name} className={styles.object_card} onClick={() => {
                                 setLog(log => log.concat(`Interacted with ${object.name}.`));
                                 setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                                 setCurrentEntity(object);
-                            }}>{object.name}</a>
+                            }}>{object.name}</div>
                         }
                     }
                 } else if (object.name == 'Datapad' && passwordFound) {
-                    return <a key={object.name} onClick={() => {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
                         setDatapadRead(true);
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
-                    }}>{object.name}</a>
+                    }}>{object.name}</div>
                 } else if (object.name == 'Locker') {
-                    return <a key={object.name} onClick={() => {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
                         setPasswordFound(true);
                         setNotification('I think this password can be typed in somewhere...');
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
-                    }}>{object.name}</a>
+                    }}>{object.name}</div>
                 } else {
-                    return <a key={object.name} onClick={() => {
+                    return <div key={object.name} className={styles.object_card} onClick={() => {
                         setLog(log => log.concat(`Interacted with ${object.name}.`));
                         setTurnsLeft(location == 'Home' ? turnsLeft : turnsLeft - 0.5);
                         setCurrentEntity(object);
-                    }}>{object.name}</a>
+                    }}>{object.name}</div>
                 }
             })}
-        </>
+        </div>
     }
 
     const renderPassage = (entity) => {
@@ -230,30 +245,30 @@ export default function Location({
     }
 
     return (
-        <div className={styles.location_page_container}>
+        <>
             {!currEntity ?
-                <>
+                <div className={styles.location_page_container}>
                     <div className={styles.location_instructions_container}>
                         <h4>{data.locationName}</h4>
-                        <p>Choose an object or person to interact with:</p>
+                        <p>Choose a crew member or object to investigate:</p>
                     </div>
                     <div className={styles.location_interactions_container}>
                         {renderPeople()}
                         {renderObjects()}
                     </div>
-                </> : renderPassage(currEntity)
+                </div> : renderPassage(currEntity)
             }
             {
                 !outroEnabled ?
                     currEntity ?
-                        <div onClick={() => setCurrentEntity(null)} className={`button ${styles.back_button}`}><p>Back to {location}</p></div>
+                        <div onClick={() => setCurrentEntity(null)} className={styles.back_button}><p>Back to {location}</p></div>
                         :
-                        <div onClick={() => goToLocation('Home')} className={`button ${styles.back_button}`}><p>Go Home</p></div>
+                        <div onClick={() => goToLocation('Home')} className={styles.back_button}><p>Go Home</p></div>
                     :
                     <Link href='/outro'>
                         <div className={`button ${styles.back_button}`}>Go To Main Deck</div>
                     </Link>
             }
-        </div>
+        </>
     )
 }

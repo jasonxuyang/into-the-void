@@ -4,6 +4,7 @@ export default function handler(req, res) {
         people: [
             {
                 name: 'Botanist',
+                imgUrl: '/asset/botanist.png',
                 passages:
                     (<>
                         <p>You: What’s going on down here? Any guesses as to what the hell is going on?</p>
@@ -30,6 +31,7 @@ export default function handler(req, res) {
             },
             {
                 name: 'Physicist',
+                imgUrl: '/asset/physicist.png',
                 passages:
                     (<>
                         <p>You: What’s going on down here? Any guesses as to what the hell is going on?</p>
@@ -56,6 +58,7 @@ export default function handler(req, res) {
             },
             {
                 name: 'Doctor',
+                imgUrl: '/asset/doctor.png',
                 passages:
                     (<>
                         <p>You: What’s going on down here? Any guesses as to what the hell is going on?</p>
